@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
                 .success(Boolean.FALSE)
                 .message(ex.getMessage())
                 .statusCode(HttpStatus.UNAUTHORIZED.value())
-                .timeStamp( LocalDateTime.now().format(DateTimeFormatter.ofPattern(AppConstants.RESPONSE_DATE)))
+                .timeStamp( LocalDateTime.now().format(DateTimeFormatter.ofPattern(AppConstants.RESPONSE_DATE_TIME)))
                 .build());
     }
 }
