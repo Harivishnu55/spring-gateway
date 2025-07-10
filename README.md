@@ -41,8 +41,34 @@ algorithm powered by Redis and supports secure access using JWT tokens. It provi
 
 ##  Project Structure
 
-<pre lang="markdown"> <code> ```text src/ └── main/ └── java/ └── com/ └── gateway/ ├── config/ ├── constants/ ├── controller/ ├── filter/ ├── dto/ ├── exception/ ├── entity/ ├── repository/ ├── service/ │ └── impl/ └── util/ └── test/ └── java/ └── com/ └── gateway/ ├── controller/ ├── filter/ ├── exception/ ├── service/ │ └── impl/ └── util/ ``` </code> </pre>
-
+```text
+src/
+ └── main/
+     └── java/
+         └── com/
+             └── gateway/   
+                 ├── config/
+                 ├── constants/
+                 ├── controller/
+                 ├── filter/
+                 ├── dto/
+                 ├── exception/
+                 ├── entity/
+                 ├── repository/
+                 ├── service/
+                 │   └── impl/
+                 └── util/
+ └── test/
+     └── java/
+         └── com/
+             └── gateway/   
+                 ├── controller/
+                 ├── filter/
+                 ├── exception/
+                 ├── service/
+                 │   └── impl/
+                 └── util/
+```
 
 ##  Installation & Run
 
