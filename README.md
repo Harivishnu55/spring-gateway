@@ -3,8 +3,8 @@
 # Rate-Limited API Gateway using Spring Boot, JWT, and Redis
 
 # Project Overview
-    This project implements a secure API Gateway using Spring Boot. It enforces rate-limiting per authenticated user using a sliding window
- algorithm powered by Redis and supports secure access using JWT tokens. It provides reusable and extensible filters for JWT authentication and rate limiting, making it suitable for any microservices-based architecture.
+This project implements a secure API Gateway using Spring Boot. It enforces rate-limiting per authenticated user using a sliding window
+algorithm powered by Redis and supports secure access using JWT tokens. It provides reusable and extensible filters for JWT authentication and rate limiting, making it suitable for any microservices-based architecture.
 
 
 ## A lightweight, secure, and scalable API Gateway middleware that supports:
