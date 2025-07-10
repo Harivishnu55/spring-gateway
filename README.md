@@ -28,7 +28,6 @@ algorithm powered by Redis and supports secure access using JWT tokens. It provi
 
 ##  Tech Stack
 
--------------------------------------------
 |      Layer       |      Technology      |
 |------------------|----------------------|
 | Backend          | Spring Boot          |
@@ -37,38 +36,12 @@ algorithm powered by Redis and supports secure access using JWT tokens. It provi
 | Auth             | Custom filter + JWT  |
 | Testing          | JUnit 5, Mockito     |
 | Build Tool       | Maven                |
--------------------------------------------
 
 
 
 ##  Project Structure
 
-src/
- └── main/
-    ├── java/
-        ├── com/
-            ├── gateway/   
-                ├── config/
-                ├── constants/
-                ├── controller/
-                ├── filter/
-                ├── dto/
-                ├── exception/
-                ├── entity/
-                ├── repository/
-                ├── service/
-                    ├── impl/
-                └── util/
- └── test/
-     ├── java/
-        ├── com/
-            ├── gateway/   
-                ├── controller/
-                ├── filter/
-                ├── exception/
-                ├── service/
-                    ├── impl/
-                └── util/
+<pre lang="markdown"> <code> ```text src/ └── main/ └── java/ └── com/ └── gateway/ ├── config/ ├── constants/ ├── controller/ ├── filter/ ├── dto/ ├── exception/ ├── entity/ ├── repository/ ├── service/ │ └── impl/ └── util/ └── test/ └── java/ └── com/ └── gateway/ ├── controller/ ├── filter/ ├── exception/ ├── service/ │ └── impl/ └── util/ ``` </code> </pre>
 
 
 ##  Installation & Run
