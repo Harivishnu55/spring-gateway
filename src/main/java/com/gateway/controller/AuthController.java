@@ -25,6 +25,16 @@ public class AuthController {
         this.authService = authService;
     }
 
+    /**
+     * Authenticates the user using the provided credentials and returns a JWT token on success.
+     *
+     * @param request the {@link AuthRequest} object containing username and password.
+     * @return {@link ResponseEntity} containing the {@link AuthResponse} with the JWT token.
+     *
+     * <p><b>Usage:</b> Call this endpoint with valid credentials to obtain a JWT token.</p>
+     * <p><b>URL:</b> POST /auth</p>
+     * <p><b>Returns:</b> 200 OK with JWT if credentials are valid, otherwise 401/404 depending on failure type.</p>
+     */
     @PostMapping
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
         logger.trace("Received login request from : {}",request.getUsername());

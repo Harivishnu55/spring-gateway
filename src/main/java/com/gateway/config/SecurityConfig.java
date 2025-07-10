@@ -24,6 +24,23 @@ public class SecurityConfig {
         this.jwtAuthenticationFilter=jwtAuthenticationFilter;
     }
 
+    /**
+     * Configures the Spring Security filter chain for the application.
+     *
+     * <p>This method defines the security behavior for all endpoints:
+     * <ul>
+     *   <li>Disables CSRF and form login.</li>
+     *   <li>Sets session management to stateless (for JWT usage).</li>
+     *   <li>Allows unauthenticated access to the "/auth" endpoint.</li>
+     *   <li>Requires authentication for all other requests.</li>
+     *   <li>Adds a custom JWT authentication filter before the default username-password filter.</li>
+     *   <li>Adds a rate-limiting filter after successful authentication.</li>
+     * </ul>
+     *
+     * @param http the {@link HttpSecurity} object used to configure HTTP security for the application.
+     * @return the configured {@link SecurityFilterChain} bean.
+     * @throws Exception if an error occurs during configuration.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http

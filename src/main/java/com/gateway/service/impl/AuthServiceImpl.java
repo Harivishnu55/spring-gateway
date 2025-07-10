@@ -25,6 +25,15 @@ public class AuthServiceImpl implements AuthService {
         this.jwtUtil=jwtUtil;
     }
 
+    /**
+     * Authenticates the user based on provided credentials and returns a JWT token upon success.
+     *
+     * @param authRequest the authentication request containing username and password.
+     * @return {@link AuthResponse} containing the generated JWT token if authentication is successful.
+     *
+     * @throws NotFoundException if the username does not exist in the database.
+     * @throws UnAuthorizedRequestException if the password is incorrect.
+     */
     @Override
     public AuthResponse authenticateUser(AuthRequest authRequest) {
 
