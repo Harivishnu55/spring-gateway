@@ -1,13 +1,19 @@
 package com.gateway.util;
 
+import com.gateway.exception.TokenExpiredException;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.spy;
 
 class JwtUtilTest {
 
+    @InjectMocks
     private JwtUtil jwtUtil;
 
     @BeforeEach
@@ -43,6 +49,22 @@ class JwtUtilTest {
 
         boolean isValid = jwtUtil.validateToken(invalidToken, "testUser");
         assertFalse(isValid, "Invalid token should not be valid");
+    }
+
+    @Test
+    void testForExpiredToken() {
+        String username = "testUser";
+        String token = jwtUtil.generateToken(username);
+        JwtUtil spyUtil = spy(new JwtUtil());
+
+        doThrow(new ExpiredJwtException(null, null, "Expired token"))
+                .when(spyUtil).extractUsername(token);
+
+        Exception exception = assertThrows(TokenExpiredException.class, () -> {
+            spyUtil.validateToken(token, username);
+        });
+
+        assertEquals("Token has expired.", exception.getMessage());
     }
 }
 

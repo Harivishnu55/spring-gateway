@@ -1,5 +1,6 @@
 package com.gateway.filter;
 
+import com.gateway.exception.TokenExpiredException;
 import com.gateway.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -35,7 +36,7 @@ class JwtAuthenticationFilterTest {
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
-        SecurityContextHolder.clearContext(); // clear context before every test
+        SecurityContextHolder.clearContext();
     }
 
     @Test
@@ -90,4 +91,17 @@ class JwtAuthenticationFilterTest {
         assertNull(SecurityContextHolder.getContext().getAuthentication());
         verify(filterChain).doFilter(request, response);
     }
+
+    @Test
+    void shouldNotSetAuthenticationIfTokenIsExpired() throws TokenExpiredException {
+        String token = "invalid.token";
+        String userName = "user";
+
+        when(request.getHeader("Authorization")).thenReturn("Bearer " + token);
+        when(request.getHeader("user-name")).thenReturn(userName);
+        when(jwtUtil.validateToken(token, userName)).thenThrow(new TokenExpiredException("Token expired"));
+
+        assertThrows(RuntimeException.class, () -> {
+            jwtFilter.doFilterInternal(request, response, filterChain);
+        });    }
 }
