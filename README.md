@@ -7,7 +7,6 @@
  algorithm powered by Redis and supports secure access using JWT tokens. It provides reusable and extensible filters for JWT authentication and rate limiting, making it suitable for any microservices-based architecture.
 
 
-
 ## A lightweight, secure, and scalable API Gateway middleware that supports:
 
 - JWT-based Authentication
@@ -79,3 +78,16 @@ src/
 - Redis Server running (locally or remote)
 - Maven 3+
 - Postgresql Server running (locally or remote)
+
+
+## Security Considerations
+
+Since this project focuses on demonstrating JWT authentication and rate-limiting middleware, it does not include endpoints for:
+
+- User Registration
+- Password Reset
+- Password Encryption with BCrypt or other secure algorithms
+
+To simplify testing Passwords are **base64-encoded** and stored in the database.
+
+During login, the system checks base64-encoded passwords for matching.
