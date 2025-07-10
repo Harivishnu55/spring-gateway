@@ -1,5 +1,6 @@
 package com.gateway.util;
 
+import com.gateway.exception.TokenExpiredException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
@@ -52,7 +53,10 @@ public class JwtUtil {
         try {
             String actualUsername = extractUsername(token);
             return actualUsername.equals(expectedUsername);
-        } catch (JwtException e) {
+        } catch (ExpiredJwtException e) {
+            throw new TokenExpiredException("Token has expired.");
+        }
+        catch (JwtException e) {
             return false;
         }
     }
